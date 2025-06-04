@@ -13,8 +13,8 @@ const navLinks = [
   { href: "/projects", label: "Projects" },
   { href: "/properties", label: "Properties" },
   { href: "/blog", label: "Our Blog" },
-  { href: "#", label: "Our Services" },
-  { href: "#", label: "Contacts" },
+  // { href: "#", label: "Our Services" },
+  { href: "/contact", label: "Contacts" },
 ]
 
 export function Navbar() {

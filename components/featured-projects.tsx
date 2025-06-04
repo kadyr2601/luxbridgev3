@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import Link from "next/link";
 
 type Development = {
     id: number
@@ -31,14 +32,9 @@ const developments: Development[] = [
 ]
 
 export function FeaturedProjects() {
-    const handleViewAll = () => {
-        console.log("View all developments")
-        // Implement navigation to all developments page
-    }
 
     const handleDevelopmentClick = (developmentId: number) => {
         console.log("Development clicked:", developmentId)
-        // Implement navigation to development details
     }
 
     return (
@@ -50,12 +46,11 @@ export function FeaturedProjects() {
                         <div className="w-24 h-px bg-gray-300"></div>
                     </div>
 
-                    <Button
-                        onClick={handleViewAll}
+                    <Link href={'/projects'}
                         className="mt-6 md:mt-0 bg-black/80 hover:bg-black text-white px-8 py-3 uppercase font-medium text-sm"
                     >
                         View All
-                    </Button>
+                    </Link>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -78,23 +73,22 @@ export function FeaturedProjects() {
 
                                 {/* Text Content */}
                                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white z-10">
-                                    <h3 className="text-xl md:text-2xl font-medium mb-2">{development.title}</h3>
-                                    <p className="text-gray-200 text-sm md:text-base">{development.location}</p>
+                                    <h3 className="text-xl md:text-xl font-medium mb-2">{development.title}</h3>
+                                    <p className="text-gray-200 text-sm md:text-sm">{development.location}</p>
                                 </div>
 
                                 {/* Hover Overlay */}
                                 <div className="absolute inset-0 bg-black/50  opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                     <div className="text-center">
-                                        <Button
-                                            variant="outline"
-                                            className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-black transition-colors duration-300"
+                                        <button
+                                            className="py-2 px-4 border-2 border-white text-white bg-transparent hover:bg-white hover:text-black transition-colors duration-300"
                                             onClick={(e) => {
                                                 e.stopPropagation()
                                                 handleDevelopmentClick(development.id)
                                             }}
                                         >
                                             View Project
-                                        </Button>
+                                        </button>
                                     </div>
                                 </div>
                             </div>

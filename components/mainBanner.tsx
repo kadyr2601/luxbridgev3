@@ -64,7 +64,8 @@ export function HeroSlider() {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <div className="flex transition-transform duration-500 ease-in-out h-full"
+            <div
+                className="flex transition-transform duration-500 ease-in-out h-full"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
                 {slides.map((slide, index) => (
@@ -80,27 +81,30 @@ export function HeroSlider() {
                                 priority={index === 0}
                             />
                         </div>
-
-                        {/* Content Overlay */}
-                        <div className="absolute bottom-40 flex flex-col justify-center items-start pl-8 md:pl-24" style={{
-                            textShadow: "1px 1px 3px rgba(0, 0, 0, 0.8), 1px 1px 2px rgba(0, 0, 0, 0.9)",
-                        }}>
-                            <h1 className="text-4xl font-serif font-medium text-white mb-4 max-w-2xl">{slide.title}</h1>
-                            <p className="text-base md:text-lg text-white mb-8 max-w-2xl">{slide.description}</p>
-                            <Button className="bg-white text-black hover:bg-gray-100 px-8 uppercase" size="lg">
-                                Learn More
-                            </Button>
-                        </div>
                     </div>
                 ))}
             </div>
-            {/* Dark overlay for better text readability */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/0"></div>
+
+            {/* Dark overlay for better text readability - moved here */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/40 z-10"></div>
+
+            {/* Content Overlay - increased z-index */}
+            <div className="absolute bottom-40 flex flex-col justify-center items-start pl-8 md:pl-24 z-20">
+                <h1 className="text-4xl font-serif font-medium text-white mb-4 max-w-2xl">{slides[currentSlide]?.title}</h1>
+                <p className="text-base md:text-lg text-white mb-8 max-w-2xl">{slides[currentSlide]?.description}</p>
+                <button
+                    style={{fontSize: '0.9em'}}
+                    className="bg-white text-black hover:bg-gray-100 px-8 uppercase py-2 cursor-pointer transition-colors duration-200 z-30 relative"
+                    onClick={() => console.log("Learn More clicked")}
+                >
+                    Learn More
+                </button>
+            </div>
 
             {/* Navigation Arrows */}
             <button
                 onClick={goToPrevious}
-                className="absolute left-4 top-1/2 -translate-y-1/2 h-10 w-10 bg-white/30 hover:bg-white/50 border-none text-white rounded-full flex items-center justify-center transition-all duration-200 z-10"
+                className="absolute left-4 top-1/2 -translate-y-1/2 h-10 w-10 bg-white/30 hover:bg-white/50 border-none text-white rounded-full flex items-center justify-center transition-all duration-200 z-30"
                 aria-label="Previous slide"
             >
                 <ChevronLeft className="h-6 w-6" />
@@ -108,13 +112,11 @@ export function HeroSlider() {
 
             <button
                 onClick={goToNext}
-                className="absolute right-4 top-1/2 -translate-y-1/2 h-10 w-10 bg-white/30 hover:bg-white/50 border-none text-white rounded-full flex items-center justify-center transition-all duration-200 z-10"
+                className="absolute right-4 top-1/2 -translate-y-1/2 h-10 w-10 bg-white/30 hover:bg-white/50 border-none text-white rounded-full flex items-center justify-center transition-all duration-200 z-30"
                 aria-label="Next slide"
             >
                 <ChevronRight className="h-6 w-6" />
             </button>
-
-            <SearchFilter/>
         </div>
     )
 }
