@@ -2,7 +2,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Bed, Bath, Square } from "lucide-react"
-import { Button } from "@/components/ui/button"
+
 
 interface Property {
     id: string
@@ -27,7 +27,7 @@ export default function SimilarPropertiesSection({
                                                      properties = [
                                                          {
                                                              id: "1",
-                                                             slug: "opulent-acacia-villas-1",
+                                                             slug: "property-1",
                                                              title: "Opulent Acacia villas At Desert",
                                                              location: "Leaf 4 Al Barari",
                                                              image: "/example1.png",
@@ -38,7 +38,7 @@ export default function SimilarPropertiesSection({
                                                          },
                                                          {
                                                              id: "2",
-                                                             slug: "opulent-acacia-villas-2",
+                                                             slug: "property-2",
                                                              title: "Opulent Acacia villas At Desert",
                                                              location: "Leaf 4 Al Barari",
                                                              image: "/example2.png",
@@ -49,7 +49,7 @@ export default function SimilarPropertiesSection({
                                                          },
                                                          {
                                                              id: "3",
-                                                             slug: "opulent-acacia-villas-3",
+                                                             slug: "property-3",
                                                              title: "Opulent Acacia villas At Desert",
                                                              location: "Leaf 4 Al Barari",
                                                              image: "/example3.png",
@@ -95,7 +95,7 @@ export default function SimilarPropertiesSection({
                                             More Details
                                         </Link>
                                         <Link
-                                            href={"#"}
+                                            href={`https://wa.me/971529131504?text=Hello i want get more information to ${property.title}`}
                                             className="border border-white text-white px-6 py-3 uppercase font-medium text-sm hover:bg-white hover:text-black transition-colors duration-300"
                                         >
                                             Make Enquiry

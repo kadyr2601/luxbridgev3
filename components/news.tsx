@@ -1,5 +1,6 @@
 "use client"
 import Image from "next/image"
+import Link from "next/link";
 
 type NewsArticle = {
     id: number
@@ -41,10 +42,6 @@ const newsArticles: NewsArticle[] = [
 ]
 
 export function InTheNews() {
-    const handleArticleClick = (slug: string) => {
-        console.log("Navigate to article:", slug)
-        // Implement navigation to article page
-    }
 
     return (
         <section className="py-16 md:py-24 bg-white">
@@ -56,7 +53,7 @@ export function InTheNews() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {newsArticles.map((article) => (
-                        <div key={article.id} className="border border-gray-200 group cursor-pointer" onClick={() => handleArticleClick(article.slug)}>
+                        <Link href={`/blog/${article.slug}`} key={article.id} className="border border-gray-200 group cursor-pointer">
                             <div className="relative h-64 mb-4 overflow-hidden">
                                 <Image
                                     src={article.image || "/placeholder.svg"}
@@ -72,7 +69,7 @@ export function InTheNews() {
                                     {article.title}
                                 </h3>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>

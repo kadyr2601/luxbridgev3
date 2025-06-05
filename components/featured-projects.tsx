@@ -33,10 +33,6 @@ const developments: Development[] = [
 
 export function FeaturedProjects() {
 
-    const handleDevelopmentClick = (developmentId: number) => {
-        console.log("Development clicked:", developmentId)
-    }
-
     return (
         <section className="pt-16 md:pt-24">
             <div className="container mx-auto px-4">
@@ -55,11 +51,7 @@ export function FeaturedProjects() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {developments.map((development) => (
-                        <div
-                            key={development.id}
-                            className="relative group cursor-pointer overflow-hidden"
-                            onClick={() => handleDevelopmentClick(development.id)}
-                        >
+                        <div key={development.id} className="relative group cursor-pointer overflow-hidden" >
                             <div className="relative h-80 md:h-96 overflow-hidden">
                                 <Image
                                     src={development.image || "/placeholder.svg"}
@@ -80,15 +72,11 @@ export function FeaturedProjects() {
                                 {/* Hover Overlay */}
                                 <div className="absolute inset-0 bg-black/50  opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                     <div className="text-center">
-                                        <button
+                                        <Link href={`/projects/${development.id}`}
                                             className="py-2 px-4 border-2 border-white text-white bg-transparent hover:bg-white hover:text-black transition-colors duration-300"
-                                            onClick={(e) => {
-                                                e.stopPropagation()
-                                                handleDevelopmentClick(development.id)
-                                            }}
                                         >
                                             View Project
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

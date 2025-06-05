@@ -97,7 +97,7 @@ export function FeaturedProperties() {
                                                     More Details
                                                 </Link>
                                                 <Link
-                                                    href={`#${property.id}`}
+                                                    href={`https://wa.me/971529131504?text=Hello i want get more information to ${property.title}`}
                                                     className="border border-white text-white px-6 py-3 uppercase font-medium text-sm hover:bg-white hover:text-black transition-colors duration-300"
                                                 >
                                                     Make Enquiry

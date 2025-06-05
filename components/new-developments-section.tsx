@@ -4,6 +4,7 @@ import { useState } from "react"
 import Image from "next/image"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import {Pagination} from "@/components/pagination";
+import Link from "next/link";
 
 interface Property {
     id: string
@@ -301,15 +302,11 @@ export default function NewDevelopmentsSection({
                                 {/* Hover Overlay */}
                                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                     <div className="text-center">
-                                        <button
+                                        <Link href={`/projects/${property.slug}`}
                                             className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-black transition-colors duration-300 px-6 py-3 font-medium"
-                                            onClick={(e) => {
-                                                e.stopPropagation()
-                                                console.log(`View project: ${property.id}`)
-                                            }}
                                         >
                                             View Project
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

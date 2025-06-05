@@ -31,7 +31,6 @@ export async function generateMetadata({ params }: PropertyPageProps) {
 export default async function PropertyPage({ params }: PropertyPageProps) {
     const properties = await getProperties()
     const property = properties.find((p) => p.slug === params.slug)
-    console.log(property)
 
     if (!property) {
         notFound()
