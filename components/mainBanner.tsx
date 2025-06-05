@@ -5,6 +5,7 @@ import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {SearchFilter} from "@/components/search-filter";
+import Link from "next/link";
 
 // Define our slides
 const slides = [
@@ -12,6 +13,7 @@ const slides = [
         id: 1,
         imageUrl: "/dubai.webp",
         title: "Villa in Hattan The Lakes",
+        slug: "property-1",
         description:
             "Our team thrive in a collaborative environment in which skill sets, accountability, and open dialogue come together to serve the greater good of the client.",
     },
@@ -19,6 +21,7 @@ const slides = [
         id: 2,
         imageUrl: "/abudabi.avif",
         title: "Downtown Sky-High Penthouse",
+        slug: "property-3",
         description: "Experience unparalleled luxury with breathtaking city views from this exclusive penthouse.",
     },
 ]
@@ -92,13 +95,12 @@ export function HeroSlider() {
             <div className="absolute bottom-40 flex flex-col justify-center items-start pl-8 md:pl-24 z-20">
                 <h1 className="text-4xl font-serif font-medium text-white mb-4 max-w-2xl">{slides[currentSlide]?.title}</h1>
                 <p className="text-base md:text-lg text-white mb-8 max-w-2xl">{slides[currentSlide]?.description}</p>
-                <button
+                <Link href={`/properties/${slides[currentSlide].slug}`}
                     style={{fontSize: '0.9em'}}
                     className="bg-white text-black hover:bg-gray-100 px-8 uppercase py-2 cursor-pointer transition-colors duration-200 z-30 relative"
-                    onClick={() => console.log("Learn More clicked")}
                 >
                     Learn More
-                </button>
+                </Link>
             </div>
 
             {/* Navigation Arrows */}
